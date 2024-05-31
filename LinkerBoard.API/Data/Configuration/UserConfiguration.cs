@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LinkerBoard.API.Data.Configuration;
 
-internal class UserConfiguration : IEntityTypeConfiguration<User>
+internal class UserConfiguration
+    : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
