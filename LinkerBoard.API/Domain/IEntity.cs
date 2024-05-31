@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LinkerBoard.API.Domain;
 
-internal abstract class BaseEntity<Tkey>
+public abstract class BaseEntity<Tkey>
     where Tkey : notnull
 {
     [Key]

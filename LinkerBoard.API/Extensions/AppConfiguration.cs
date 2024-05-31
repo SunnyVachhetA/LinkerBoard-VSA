@@ -4,14 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LinkerBoard.API.Extensions;
 
-internal static class AppConfiguration
+public static class AppConfiguration
 {
     internal static void RegisterDatabase(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddDbContext<LinkerBoardDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("LinkerBoardDbConnection"));
+            options.UseNpgsql(configuration.GetValue<string>("LinkerBoardDbConnection"))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking); //Turn off query tracking behavior on global context
         });
     }
 
