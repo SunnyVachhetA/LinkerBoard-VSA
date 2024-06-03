@@ -1,5 +1,7 @@
 using LinkerBoard.API.Features.Common;
 using LinkerBoard.API.Domain;
+using LinkerBoard.API.Features.Common.Markers;
+
 namespace LinkerBoard.API.Features.Users;
 
 public interface IUserService : IService

@@ -1,5 +1,5 @@
 using LinkerBoard.API.Data;
-using LinkerBoard.API.Features.Common;
+using LinkerBoard.API.Features.Common.Markers;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkerBoard.API.Extensions;
@@ -25,12 +25,12 @@ internal static class AppConfiguration
         );
     }
 
-    internal static void RegisterRepositories(this IServiceCollection services)
-    {
-        services.Scan(scan => scan.FromAssemblyOf<Program>()
-            .AddClasses(classes => classes.AssignableTo<IRepository>())
-            .AsImplementedInterfaces()
-            .WithScopedLifetime()
-        );
-    }
+//    internal static void RegisterRepositories(this IServiceCollection services)
+//    {
+//        services.Scan(scan => scan.FromAssemblyOf<Program>()
+//            .AddClasses(classes => classes.AssignableTo<IRepository>())
+//            .AsImplementedInterfaces()
+//            .WithScopedLifetime()
+//        );
+//    }
 }

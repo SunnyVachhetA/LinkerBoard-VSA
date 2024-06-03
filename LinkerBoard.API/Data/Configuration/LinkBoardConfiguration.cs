@@ -37,6 +37,7 @@ internal sealed class LinkBoardConfiguration
             .HasColumnName("updatedAt");
         
         //https://www.npgsql.org/efcore/mapping/full-text-search.html#method-2-expression-index
+        //TODO Need to change this because full text search is not working
         builder.HasIndex(x => new { x.Title })
             .HasMethod("gin")
             .IsTsVectorExpressionIndex("english"); 
