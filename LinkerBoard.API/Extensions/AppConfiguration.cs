@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LinkerBoard.API.Extensions;
 
-public static class AppConfiguration
+internal static class AppConfiguration
 {
     internal static void RegisterDatabase(this IServiceCollection services,
         IConfiguration configuration)
