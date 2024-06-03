@@ -11,6 +11,9 @@ internal class UserConfiguration
     {
         builder.ToTable("tblUser");
         
+        builder.Property(x => x.Id)
+            .HasColumnName("id");
+
         builder.Property(x => x.Email)
             .HasColumnName("email")
             .HasColumnType("VARCHAR")

@@ -10,6 +10,10 @@ internal sealed class LinkerBoardDbContext(DbContextOptions<LinkerBoardDbContext
 {
     public DbSet<User> Users { get; set; }
 
+    public DbSet<LinkBoard> LinkBoards { get; set; }
+
+    public DbSet<Link> Links { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

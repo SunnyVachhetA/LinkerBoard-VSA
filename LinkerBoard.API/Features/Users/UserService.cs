@@ -15,4 +15,17 @@ internal class UserService(LinkerBoardDbContext linkerBoardDbContext)
 
         return result;
     }
+
+    public async Task<UserDto> AddAsync(UserDto userDto,
+        CancellationToken cancellationToken = default)
+    {
+        User userModel = userDto.ToEntity();
+
+        await _dbContext.Users.AddAsync(userModel, cancellationToken);
+
+        return userDto with
+        {
+            Id = userModel.Id
+        };
+    }
 }

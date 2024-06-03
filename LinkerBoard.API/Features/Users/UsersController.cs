@@ -17,4 +17,13 @@ public sealed class UsersController(IUserService userService)
 
         return Ok(users);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Register([FromBody] UserDto userDto,
+        CancellationToken cancellationToken)
+    {
+        userDto = await _userService.AddAsync(userDto, cancellationToken);
+
+        return Ok(userDto);
+    }
 }
