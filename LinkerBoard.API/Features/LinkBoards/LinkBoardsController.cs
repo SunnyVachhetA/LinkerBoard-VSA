@@ -1,3 +1,4 @@
+using LinkerBoard.API.Features.Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LinkerBoard.API.Features.LinkBoards;
@@ -18,7 +19,7 @@ public sealed class LinkBoardsController(ILinkBoardService linkBoardService)
         return Ok(dto);
     }
     
-    [HttpPut]
+    [HttpPut("update")]
     public async Task<IActionResult> Update([FromBody] UpsertLinkBoardRequestDto linkBoardDto,
         CancellationToken cancellationToken)
     {
@@ -26,4 +27,23 @@ public sealed class LinkBoardsController(ILinkBoardService linkBoardService)
         
         return Ok(dto);
     }
+
+    [HttpPost("filter")]
+    public async Task<IActionResult> Filter([FromBody] FilterLinkBoardRequestDto? filterDto,
+        CancellationToken cancellationToken)
+    {
+        PageResponseDto<LinkBoardResponseDto> linkBoardResponse = await _linkBoardService.FilterAsync(filterDto ?? new(), cancellationToken);
+
+        return Ok(linkBoardResponse);
+    }
+
+    [HttpDelete("{boardId:int}")]
+    public async Task<IActionResult> Delete([FromRoute] int boardId,
+        CancellationToken cancellationToken)
+    {
+        await _linkBoardService.DeleteAsync(boardId, cancellationToken);
+        return Ok();
+    }
+
+
 }

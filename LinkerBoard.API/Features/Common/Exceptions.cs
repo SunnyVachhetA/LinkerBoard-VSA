@@ -11,3 +11,15 @@ internal sealed class UnprocessableException
         : base(message)
     { }
 }
+
+internal sealed class ResourceNotFoundException
+    : Exception
+{
+    internal ResourceNotFoundException()
+        : base("Resource not found.")
+    { }
+
+    internal ResourceNotFoundException(string message)
+        : base(message)
+    { }
+}
