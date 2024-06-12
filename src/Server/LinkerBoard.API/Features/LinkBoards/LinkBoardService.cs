@@ -32,7 +32,7 @@ internal sealed class LinkBoardService(LinkerBoardDbContext dbContext)
         LinkBoard? linkBoardEntity = await _dbContext.LinkBoards
             .FirstOrDefaultAsync(x => x.Id == linkBoardDto.Id && x.UserId == _userId, cancellationToken);
 
-        if (linkBoardDto is null) throw new UnprocessableException("Can't process Link Board Request. Please try again.");
+        if (linkBoardEntity is null) throw new UnprocessableException("Can't process Link Board Request. Please try again.");
 
         linkBoardEntity.UpdatedAt = DateHelper.TodayDate;
         linkBoardEntity.Title = linkBoardDto.Title;
