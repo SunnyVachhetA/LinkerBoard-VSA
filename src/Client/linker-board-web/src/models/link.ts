@@ -1,5 +1,7 @@
-interface Link {
-    title: string;
-    url: string;
-    note: string;
+export interface ILink {
+    id: number,
+    title: string,
+    url: string,
+    note?: string,
+    boardId: number,
 }
